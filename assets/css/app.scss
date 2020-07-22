@@ -33,6 +33,26 @@ body {
   right: 5px;
 }
 
+.form-inline .form-control {
+  width: 50%;
+  border-color: #FFD2F0;
+}
+
+.form-inline .btn-outline-success {
+  border-color: #FFD2F0;
+  color: #FFD2F0 ;
+}
+
+.btn-outline-success:hover{
+  background-color: #FFD2F0;
+  color: #FFFFFF;
+}
+
+.form-inline {
+  margin-left: 25%;
+  margin-top: 20px !important;
+}
+
 @media screen and (min-width: 992px) {
   .navbar-light .navbar-nav .active .nav-link {
     font-size: 35px;
