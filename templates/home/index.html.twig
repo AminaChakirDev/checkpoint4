@@ -1,5 +1,16 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Recettes{% endblock %}
+
 {% block body %}
-<h1>{{ website }} index</h1>
+    <h1>Toutes les recettes :</h1>
+    {% for recipe in recipes %}
+        <div>
+            <h2>{{ loop.index }} / {{ recipe.recipetitle }}</h2>
+            <p>{{ recipe.process }}</p>
+        </div>
+
+    {% else %}
+        Aucune recette trouvée
+    {% endfor %}
 {% endblock %}
