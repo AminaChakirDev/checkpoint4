@@ -1,3 +1,45 @@
+//body {
+//    background-color: lightgray;
+//}
+
+
+// assets/css/global.scss
+
+
+
+// customize some Bootstrap variables
+
+
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
+
 body {
-    background-color: lightgray;
+  font-family: 'Lobster', cursive;
+}
+
+.navbar-light {
+  background-color: #FFEBF8;
+  color: #72231A;
+}
+
+.navbar-light .navbar-nav .active .nav-link {
+  color: #72231A;
+  font-size: 20px;
+}
+
+.login {
+  position: absolute;
+  top : 5px;
+  right: 5px;
+}
+
+@media screen and (min-width: 992px) {
+  .navbar-light .navbar-nav .active .nav-link {
+    font-size: 35px;
+  }
+
+  #navbarSupportedContent {
+  position: absolute;
+  right: 0px;
+  }
 }

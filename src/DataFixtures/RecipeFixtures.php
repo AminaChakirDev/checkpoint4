@@ -24,7 +24,7 @@ class RecipeFixtures extends Fixture
             $recipeFaker->setRecipeTitle($title);
             $recipeFaker->setRecipePoster($faker->imageUrl(320, 240, 'food'));
             $recipeFaker->setPreparationTime($faker->numberBetween($min = 5, $max = 55));
-            $recipeFaker->getCookingTime($faker->numberBetween($min = 5, $max = 55));
+            $recipeFaker->setCookingTime($faker->numberBetween($min = 5, $max = 55));
             $recipeFaker->setNbParts($faker->numberBetween($min = 1, $max = 12));
             $recipeFaker->setProcess($faker->text($maxNbChars = 500));
             $recipeFaker->setLevel($faker->numberBetween($min = 1, $max = 5));
