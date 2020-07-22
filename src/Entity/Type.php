@@ -29,6 +29,11 @@ class Type
      */
     private $Recipes;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Slug;
+
     public function __construct()
     {
         $this->Recipes = new ArrayCollection();
@@ -73,6 +78,18 @@ class Type
         if ($this->Recipes->contains($recipe)) {
             $this->Recipes->removeElement($recipe);
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->Slug;
+    }
+
+    public function setSlug(string $Slug): self
+    {
+        $this->Slug = $Slug;
 
         return $this;
     }

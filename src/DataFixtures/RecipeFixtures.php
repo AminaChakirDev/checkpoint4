@@ -7,6 +7,7 @@ use App\Entity\Recipe;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker;
+use App\Service\Slugify;
 
 
 class RecipeFixtures extends Fixture
@@ -16,9 +17,11 @@ class RecipeFixtures extends Fixture
     {
 
         $faker = Faker\Factory::create('fr_FR');
+        $slugify = new Slugify();
         for ($i = 0; $i < 6; $i++) {
             $recipeFaker = new Recipe();
-            $recipeFaker->setRecipeTitle($faker->word);
+            $title = implode(" ", $faker->words($nb = 3, $asText = false));
+            $recipeFaker->setRecipeTitle($title);
             $recipeFaker->setRecipePoster($faker->imageUrl(320, 240, 'food'));
             $recipeFaker->setPreparationTime($faker->numberBetween($min = 5, $max = 55));
             $recipeFaker->getCookingTime($faker->numberBetween($min = 5, $max = 55));
@@ -27,6 +30,9 @@ class RecipeFixtures extends Fixture
             $recipeFaker->setLevel($faker->numberBetween($min = 1, $max = 5));
             $recipeFaker->setOnlineDate($faker->dateTimeThisYear($max = 'now', $timezone = null));
             $recipeFaker->setInstaAccount('@' . $faker->firstName);
+
+            $slug = $slugify->generate($title);
+            $recipeFaker->setSlug($slug);
 
             $manager->persist($recipeFaker);
 

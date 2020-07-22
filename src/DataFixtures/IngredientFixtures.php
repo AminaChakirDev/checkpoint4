@@ -8,6 +8,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use App\Service\Slugify;
 
 
 class IngredientFixtures extends Fixture implements DependentFixtureInterface
@@ -20,11 +21,16 @@ class IngredientFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(\Doctrine\Persistence\ObjectManager $manager)
     {
+        $slugify = new Slugify();
 
         $faker = Faker\Factory::create('fr_FR');
         for ($i = 0; $i < 6; $i++) {
             $ingredientFaker = new Ingredient();
-            $ingredientFaker->setIngredientName($faker->word);
+            $ingredientName = $faker->word;
+            $slug = $slugify->generate($ingredientName);
+            $ingredientFaker->setSlug($ingredientName);
+
+            $ingredientFaker->setIngredientName($ingredientName);
             $ingredientFaker->setIngredientPoster($faker->imageUrl(320, 240, 'food'));
 
             $manager->persist($ingredientFaker);
