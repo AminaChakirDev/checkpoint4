@@ -53,6 +53,24 @@ body {
   margin-top: 20px !important;
 }
 
+.card{
+  margin: 25px 20px;
+}
+
+.recipe-title {
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+
+  &:hover{
+    text-decoration: none;
+    color: black;
+  }
+}
+
 @media screen and (min-width: 992px) {
   .navbar-light .navbar-nav .active .nav-link {
     font-size: 35px;
